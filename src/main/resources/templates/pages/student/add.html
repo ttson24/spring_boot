@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org" th:replace="~{layout/template :: layout(~{::title}, ~{::script}, ~{::link}, ~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" />
+<script type="text/javascript"></script>
+</head>
+<body>
+	<div id="addStudent" th:fragment="body" th:remove="tag">
+		<h2>This is add student page</h2>
+	</div>
+</body>
+</html>

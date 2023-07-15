@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/template :: layout(~{::title}, ~{::script}, ~{::link}, ~{::body/content()})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Student</title>
+	<link rel="stylesheet" />
+	<script type="text/javascript"></script>
+</head>
+
+<body>
+	<div id="lstStudent" th:fragment="body" th:remove="tag">
+		<h2>This is student list page</h2>
+		<div class="container text-end">
+			<a th:href="@{/student-add}" class="btn btn-info col-sm-2">Create</a>
+		</div>
+		<div class="row mb-3">
+			<div class="table-responsive">
+				<table class="table table-bodered table-hover">
+					<thead class="table-light">
+						<tr>
+							<th class="col-sm-1">No</th>
+							<th class="col-sm-3">First Name</th>
+							<th class="col-sm-3">Last Name</th>
+							<th class="col-sm-5">Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="ls : ${lstStudent}">
+							<th scope="row"><span th:text="*{ls.index}"></span></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

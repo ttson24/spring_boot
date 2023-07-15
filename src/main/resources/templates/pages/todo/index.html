@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/template :: layout(~{::title}, ~{::script}, ~{::link}, ~{::body/content()})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Todo List Page</title>
+	<script type="text/javascript"></script>
+	<link rel="stylesheet" />
+</head>
+
+<body>
+	<div th:fragment="body" th:remove="tag">
+		<h2>Todo List Page</h2>
+		<ul>
+			<li th:each="todo : ${lstTodo}">
+				<span>Title: </span><span th:text="*{todo.title}"></span> <br />
+				<span>Detail: </span><span th:text="*{todo.detail}"></span><br />
+				<a th:href="@{/todo-del/}" class="btn btn-danger">Delete</a>
+			</li>
+			<br />
+		</ul>
+		<div class="container"><a th:href="@{/todo-add}" class="btn btn-primary">Create</a></div>
+	</div>
+</body>
+
+</html>
