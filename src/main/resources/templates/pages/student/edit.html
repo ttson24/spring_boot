@@ -9,6 +9,30 @@
 <body>
 	<div id="editStudent" th:fragment="body" th:remove="tag">
 		<h2>This is edit student page</h2>
+		<form th:action="@{/student-edit}" th:object="${student}" th:method="post">
+			<div class="row mb-3">
+				<label for="firstName" class="col-sm-2">First Name</label>
+				<div class="col-sm-10">
+					<input type="hidden" th:field="*{id}" />
+					<input type="text" class="form-control" th:field="*{firstName}" />
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="firstName" class="col-sm-2">Last Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" th:field="*{lastName}" />
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="firstName" class="col-sm-2">Email</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" th:field="*{email}" />
+				</div>
+			</div>
+			<div class="row justify-content-center mx-auto">
+				<button class="btn btn-primary col-sm-2" type="submit">Update</button>
+			</div>
+		</form>
 	</div>
 </body>
 </html>

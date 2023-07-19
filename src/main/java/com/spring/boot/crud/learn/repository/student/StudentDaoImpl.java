@@ -40,11 +40,9 @@ public class StudentDaoImpl implements StudentDao {
     public List<Students> findAll() {
 	
 //	String normalQuery = "FROM students";
-	String sortQuery = " FROM students order by lastName asc";
+	String sortQuery = " FROM Students order by lastName asc";
 	
-	TypedQuery<Students> query = entityManager.createQuery("FROM students", Students.class);
-	System.out.println("finall");
-	System.out.println(query.getMaxResults());
+	TypedQuery<Students> query = entityManager.createQuery(sortQuery, Students.class);
 	
 	return query.getResultList();
     }
@@ -52,7 +50,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public Students findByName(String name) {
 	
-	String strQuery = " FROM students WHERE lastName=:name";
+	String strQuery = " FROM Students WHERE lastName=:name";
 	TypedQuery<Students> query = entityManager.createQuery(strQuery, Students.class);
 	query.setParameter("name", name);
 	
@@ -90,7 +88,7 @@ public class StudentDaoImpl implements StudentDao {
 	int result = 1;
 	try {
 	    String strQuery = " DELETE FROM students";
-	    result = entityManager.createNamedQuery(strQuery).executeUpdate();
+	    result = entityManager.createQuery(strQuery).executeUpdate();
 	}catch (Exception e) {
 	    result = -1;
 	}

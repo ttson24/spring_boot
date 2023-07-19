@@ -23,16 +23,12 @@ public class StudentService {
     public List<StudentDto> findAll(){
 	List<Students> lstStudent = new ArrayList<Students>();
 	lstStudent = this.repo.findAll();
-	
-	
 	List<StudentDto> lstStudentDto = new ArrayList<StudentDto>();
-//	lstStudent.forEach(student->{
-//	    StudentDto dto = new StudentDto();
-//	    BeanUtils.copyProperties(student,dto);
-//	    lstStudentDto.add(dto);
-//	});
-	// other
-	BeanUtils.copyProperties(lstStudent, lstStudentDto);
+	lstStudent.forEach(student->{
+	    StudentDto dto = new StudentDto();
+	    BeanUtils.copyProperties(student,dto);
+	    lstStudentDto.add(dto);
+	});
 	return lstStudentDto;
     }
     
@@ -63,6 +59,13 @@ public class StudentService {
 	BeanUtils.copyProperties(entity, dto);
 	
 	return dto;
+    }
+    
+    //update student with id
+    public int update(StudentDto dto) {
+	Students student = new Students();
+	BeanUtils.copyProperties(dto, student);
+	return this.repo.update(student);
     }
     
     //delete student with id

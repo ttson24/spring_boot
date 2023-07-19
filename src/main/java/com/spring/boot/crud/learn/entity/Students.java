@@ -3,7 +3,7 @@ package com.spring.boot.crud.learn.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="students")
+@Table(name="Students")
 public class Students {
     
     //define field

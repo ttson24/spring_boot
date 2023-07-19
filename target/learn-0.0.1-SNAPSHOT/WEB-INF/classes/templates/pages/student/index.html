@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/template :: layout(~{::title}, ~{::script}, ~{::link}, ~{::body/content()})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Student</title>
+	<link rel="stylesheet" />
+	<script type="text/javascript"></script>
+</head>
+
+<body>
+	<div id="lstStudent" th:fragment="body" th:remove="tag">
+		<h2>This is student list page</h2>
+		<div class="container text-end mb-3">
+			<a th:href="@{/student-add}" class="btn btn-info col-sm-2">Create</a>
+		</div>
+		<div class="row mb-3">
+			<div class="table-responsive">
+				<table class="table table-bodered table-hover">
+					<thead class="table-light">
+						<tr>
+							<th class="col-sm-1">No</th>
+							<th class="col-sm-2">First Name</th>
+							<th class="col-sm-2">Last Name</th>
+							<th class="col-sm-5">Email</th>
+							<th class="col-sm-2"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="ls, item : ${lstStudent}">
+							<th scope="row"><span th:text="${item.index +1}"></span></th>
+							<th><span th:text="*{ls.firstName}"></span></th>
+							<th><span th:text="*{ls.lastName}"></span></th>
+							<th><span th:text="*{ls.email}"></span></th>
+							<th>
+								<a class="btn btn-warning" th:href="@{/student-edit?id={id}(id=${ls.id})}">Edit</a>
+								<a class="btn btn-danger" th:href="@{/student-del?id={id}(id=${ls.id})}">Del</a>
+							</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
